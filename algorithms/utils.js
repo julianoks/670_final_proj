@@ -1,4 +1,4 @@
-import {KalmanFilter} from './KalmanFilter.js';
+import {KalmanFilter} from './kalmanFilter.js';
 import { hungarianOn3 } from './hungarianOn3.js';
 
 /*** See https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average
