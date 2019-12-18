@@ -1,0 +1,12 @@
+<script src="./deps/sylvester.js"></script>
+<script src="./deps/tfjs.js"></script>
+<script src="./algorithms/coco-ssd.js"></script>
+<script src="./algorithms/kdTree.js"></script>
+<script type="module" defer>
+import {track} from './track.js'
+
+new track(document.getElementById('trackingParent')).then(t => t.runInterval());
+</script>
+<body>
+<div id="trackingParent"></div>
+</body>

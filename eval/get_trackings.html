@@ -1,0 +1,31 @@
+<script src="../deps/sylvester.js"></script>
+<script src="../deps/tfjs.js"></script>
+<script src="../algorithms/coco-ssd.js"></script>
+<script src="../algorithms/kdTree.js"></script>
+
+<script type="module">
+import {getTrackings} from './get_trackings.js'
+
+function getUrlParams() {
+    let params = {};
+    window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (_,k,v) => { params[k] = v; });
+    return JSON.parse(unescape(params.payload).replace(/\+/g, ' '));
+}
+
+let {nImages, datasetName, datasetTrainOrTest, trackerWeightParams} = getUrlParams();
+nImages = +nImages;
+
+const experimentName = JSON.stringify({nImages, datasetName, datasetTrainOrTest, trackerWeightParams});
+
+function completionCallback(trackingsOverTime){
+    fetch('/post_results', {
+        method: 'POST',
+        body: JSON.stringify({experimentName, trackingsOverTime})
+    }).then(() => {
+        document.title = "Completed";
+    });
+}
+
+getTrackings(nImages, datasetName, datasetTrainOrTest, trackerWeightParams, completionCallback);
+
+</script>

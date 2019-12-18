@@ -1,0 +1,1 @@
+{"mobilenet_depths": [32, 64, 64, 128, 128], "rpn_graph_depth": 256, "FPN_depths": [64, 64], "fpn_n_blocks": 1, "fpn_mask_depth": 64, "mrcnn_depth_backbone": 64}

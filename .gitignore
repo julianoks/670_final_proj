@@ -1,0 +1,6 @@
+coco_dataset/
+.DS_Store
+eval/2DMOT2015/
+eval/results
+report/*
+

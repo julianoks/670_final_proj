@@ -1,0 +1,2376 @@
+
+<html>
+<head>
+<style>
+body {font-family: sans-serif; background-color: #fa0;}
+table {background-color: #eca;}
+th {background-color: black; color: white;}
+h1 {
+  background-color: ffaa00;
+  padding:5px;
+  color: black;
+}
+
+svg {
+  margin: 10px;
+  border: 2px;
+  border-style: solid;
+  border-color: black;
+  background: white;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #fec;
+  padding:5px;
+  margin:5px;
+}
+
+.tooltip {color: blue;}
+.tooltip .tooltipcontent  {
+    visibility: hidden;
+    color: black;
+    background-color: yellow;
+    padding: 5px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltipcontent {
+    visibility: visible;
+}
+
+.edges line {
+  stroke: #333;
+}
+
+text {
+  font-weight: bold;
+}
+
+.nodes text {
+  color: black;
+  pointer-events: none;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+</style>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+<body>
+<h1>TensorFlow Lite Model</h2><table>
+<tr><th>filename</th><td>../detect.tflite</td></tr>
+<tr><th>version</th><td>3</td></tr>
+<tr><th>description</th><td>TOCO Converted.</td></tr>
+</table>
+<div class='subgraph'><h2>Subgraph 0</h2>
+<h3>Inputs/Outputs</h3>
+<table><tr>
+<tr>
+<th>inputs</th><th>outputs</th></tr>
+<tr>
+<td><span class='tooltip'><span class='tooltipcontent'>175 normalized_input_image_tensor UINT8 [1, 300, 300, 3]<br></span>[175]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>167 TFLite_Detection_PostProcess FLOAT32 []<br>168 TFLite_Detection_PostProcess:1 FLOAT32 []<br>169 TFLite_Detection_PostProcess:2 FLOAT32 []<br>170 TFLite_Detection_PostProcess:3 FLOAT32 []<br></span>[167, 168, 169, 170]</span></td>
+</tr>
+</table>
+<h3>Tensors</h3>
+<table><tr>
+<tr>
+<th>index</th><th>name</th><th>type</th><th>shape</th><th>buffer</th><th>quantization</th></tr>
+<tr>
+<td>0</td><td>BoxPredictor_0/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 12]</td>
+<td>93</td>
+<td>{'min': [-15.094324], 'max': [5.057784], 'scale': [0.079028], 'zero_point': [191], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>1</td><td>BoxPredictor_0/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[12]</td>
+<td>12</td>
+<td>{'scale': [0.000139], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>2</td><td>BoxPredictor_0/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[12, 1, 1, 384]</td>
+<td>94</td>
+<td>{'min': [-0.723016], 'max': [0.782037], 'scale': [0.005902], 'zero_point': [123], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>3</td><td>BoxPredictor_0/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 273]</td>
+<td>83</td>
+<td>{'min': [-11.094388], 'max': [1.205912], 'scale': [0.048236], 'zero_point': [230], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>4</td><td>BoxPredictor_0/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[273]</td>
+<td>11</td>
+<td>{'scale': [5.8e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>5</td><td>BoxPredictor_0/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[273, 1, 1, 384]</td>
+<td>151</td>
+<td>{'min': [-0.249356], 'max': [0.377814], 'scale': [0.002459], 'zero_point': [101], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>6</td><td>BoxPredictor_0/Reshape</td>
+<td>UINT8</td>
+<td>[1, 1083, 1, 4]</td>
+<td>152</td>
+<td>{'min': [-15.094324], 'max': [5.057784], 'scale': [0.079028], 'zero_point': [191], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>7</td><td>BoxPredictor_0/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 1083, 91]</td>
+<td>153</td>
+<td>{'min': [-11.094388], 'max': [1.205912], 'scale': [0.048236], 'zero_point': [230], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>8</td><td>BoxPredictor_0/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>92</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>9</td><td>BoxPredictor_0/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>105</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>10</td><td>BoxPredictor_1/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 24]</td>
+<td>155</td>
+<td>{'min': [-4.341042], 'max': [3.680448], 'scale': [0.031457], 'zero_point': [138], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>11</td><td>BoxPredictor_1/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>10</td>
+<td>{'scale': [7.2e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>12</td><td>BoxPredictor_1/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 1, 1, 768]</td>
+<td>154</td>
+<td>{'min': [-0.357648], 'max': [0.425139], 'scale': [0.00307], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>13</td><td>BoxPredictor_1/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 546]</td>
+<td>117</td>
+<td>{'min': [-8.903173], 'max': [1.607517], 'scale': [0.041218], 'zero_point': [216], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>14</td><td>BoxPredictor_1/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[546]</td>
+<td>9</td>
+<td>{'scale': [4.5e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>15</td><td>BoxPredictor_1/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[546, 1, 1, 768]</td>
+<td>78</td>
+<td>{'min': [-0.252102], 'max': [0.241035], 'scale': [0.001934], 'zero_point': [130], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>16</td><td>BoxPredictor_1/Reshape</td>
+<td>UINT8</td>
+<td>[1, 600, 1, 4]</td>
+<td>156</td>
+<td>{'min': [-4.341042], 'max': [3.680448], 'scale': [0.031457], 'zero_point': [138], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>17</td><td>BoxPredictor_1/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 600, 91]</td>
+<td>138</td>
+<td>{'min': [-8.903173], 'max': [1.607517], 'scale': [0.041218], 'zero_point': [216], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>18</td><td>BoxPredictor_1/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>76</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>19</td><td>BoxPredictor_1/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>89</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>20</td><td>BoxPredictor_2/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 5, 5, 24]</td>
+<td>157</td>
+<td>{'min': [-3.689552], 'max': [3.777399], 'scale': [0.029282], 'zero_point': [126], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>21</td><td>BoxPredictor_2/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>47</td>
+<td>{'scale': [0.000205], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>22</td><td>BoxPredictor_2/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 1, 1, 384]</td>
+<td>109</td>
+<td>{'min': [-0.373591], 'max': [0.379528], 'scale': [0.002953], 'zero_point': [126], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>23</td><td>BoxPredictor_2/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 5, 5, 546]</td>
+<td>158</td>
+<td>{'min': [-7.71951], 'max': [1.522157], 'scale': [0.036242], 'zero_point': [213], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>24</td><td>BoxPredictor_2/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[546]</td>
+<td>8</td>
+<td>{'scale': [0.000125], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>25</td><td>BoxPredictor_2/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[546, 1, 1, 384]</td>
+<td>135</td>
+<td>{'min': [-0.263716], 'max': [0.198018], 'scale': [0.001811], 'zero_point': [146], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>26</td><td>BoxPredictor_2/Reshape</td>
+<td>UINT8</td>
+<td>[1, 150, 1, 4]</td>
+<td>159</td>
+<td>{'min': [-3.689552], 'max': [3.777399], 'scale': [0.029282], 'zero_point': [126], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>27</td><td>BoxPredictor_2/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 150, 91]</td>
+<td>160</td>
+<td>{'min': [-7.71951], 'max': [1.522157], 'scale': [0.036242], 'zero_point': [213], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>28</td><td>BoxPredictor_2/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>84</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>29</td><td>BoxPredictor_2/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>96</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>30</td><td>BoxPredictor_3/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 24]</td>
+<td>161</td>
+<td>{'min': [-3.456358], 'max': [3.538653], 'scale': [0.027431], 'zero_point': [126], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>31</td><td>BoxPredictor_3/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>7</td>
+<td>{'scale': [0.00022], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>32</td><td>BoxPredictor_3/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 1, 1, 192]</td>
+<td>130</td>
+<td>{'min': [-0.30006], 'max': [0.367517], 'scale': [0.002618], 'zero_point': [115], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>33</td><td>BoxPredictor_3/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 546]</td>
+<td>91</td>
+<td>{'min': [-7.662566], 'max': [1.425594], 'scale': [0.03564], 'zero_point': [215], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>34</td><td>BoxPredictor_3/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[546]</td>
+<td>6</td>
+<td>{'scale': [0.000148], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>35</td><td>BoxPredictor_3/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[546, 1, 1, 192]</td>
+<td>162</td>
+<td>{'min': [-0.247699], 'max': [0.201645], 'scale': [0.001762], 'zero_point': [141], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>36</td><td>BoxPredictor_3/Reshape</td>
+<td>UINT8</td>
+<td>[1, 54, 1, 4]</td>
+<td>163</td>
+<td>{'min': [-3.456358], 'max': [3.538653], 'scale': [0.027431], 'zero_point': [126], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>37</td><td>BoxPredictor_3/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 54, 91]</td>
+<td>102</td>
+<td>{'min': [-7.662566], 'max': [1.425594], 'scale': [0.03564], 'zero_point': [215], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>38</td><td>BoxPredictor_3/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>175</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>39</td><td>BoxPredictor_3/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>87</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>40</td><td>BoxPredictor_4/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 2, 2, 24]</td>
+<td>106</td>
+<td>{'min': [-2.850468], 'max': [2.416701], 'scale': [0.020656], 'zero_point': [138], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>41</td><td>BoxPredictor_4/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>5</td>
+<td>{'scale': [8.3e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>42</td><td>BoxPredictor_4/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 1, 1, 192]</td>
+<td>165</td>
+<td>{'min': [-0.192953], 'max': [0.199373], 'scale': [0.001539], 'zero_point': [125], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>43</td><td>BoxPredictor_4/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 2, 2, 546]</td>
+<td>143</td>
+<td>{'min': [-6.149231], 'max': [0.789061], 'scale': [0.027209], 'zero_point': [226], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>44</td><td>BoxPredictor_4/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[546]</td>
+<td>4</td>
+<td>{'scale': [6.3e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>45</td><td>BoxPredictor_4/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[546, 1, 1, 192]</td>
+<td>167</td>
+<td>{'min': [-0.130348], 'max': [0.170675], 'scale': [0.00118], 'zero_point': [110], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>46</td><td>BoxPredictor_4/Reshape</td>
+<td>UINT8</td>
+<td>[1, 24, 1, 4]</td>
+<td>168</td>
+<td>{'min': [-2.850468], 'max': [2.416701], 'scale': [0.020656], 'zero_point': [138], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>47</td><td>BoxPredictor_4/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 24, 91]</td>
+<td>169</td>
+<td>{'min': [-6.149231], 'max': [0.789061], 'scale': [0.027209], 'zero_point': [226], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>48</td><td>BoxPredictor_4/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>86</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>49</td><td>BoxPredictor_4/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>85</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>50</td><td>BoxPredictor_5/BoxEncodingPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 1, 1, 24]</td>
+<td>111</td>
+<td>{'min': [-3.047909], 'max': [2.06536], 'scale': [0.020052], 'zero_point': [152], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>51</td><td>BoxPredictor_5/BoxEncodingPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>3</td>
+<td>{'scale': [8.8e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>52</td><td>BoxPredictor_5/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 1, 1, 96]</td>
+<td>128</td>
+<td>{'min': [-0.252255], 'max': [0.256237], 'scale': [0.001994], 'zero_point': [127], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>53</td><td>BoxPredictor_5/ClassPredictor/BiasAdd</td>
+<td>UINT8</td>
+<td>[1, 1, 1, 546]</td>
+<td>172</td>
+<td>{'min': [-5.934154], 'max': [1.136917], 'scale': [0.02773], 'zero_point': [214], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>54</td><td>BoxPredictor_5/ClassPredictor/Conv2D_bias</td>
+<td>INT32</td>
+<td>[546]</td>
+<td>1</td>
+<td>{'scale': [5.4e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>55</td><td>BoxPredictor_5/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[546, 1, 1, 96]</td>
+<td>171</td>
+<td>{'min': [-0.143225], 'max': [0.16774], 'scale': [0.001219], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>56</td><td>BoxPredictor_5/Reshape</td>
+<td>UINT8</td>
+<td>[1, 6, 1, 4]</td>
+<td>140</td>
+<td>{'min': [-3.047909], 'max': [2.06536], 'scale': [0.020052], 'zero_point': [152], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>57</td><td>BoxPredictor_5/Reshape_1</td>
+<td>UINT8</td>
+<td>[1, 6, 91]</td>
+<td>173</td>
+<td>{'min': [-5.934154], 'max': [1.136917], 'scale': [0.02773], 'zero_point': [214], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>58</td><td>BoxPredictor_5/stack</td>
+<td>INT32</td>
+<td>[4]</td>
+<td>133</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>59</td><td>BoxPredictor_5/stack_1</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>107</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>60</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>19</td>
+<td>{'scale': [0.000116], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>61</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/Relu6</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 192]</td>
+<td>145</td>
+<td>{'min': [-6.20044], 'max': [6.866494], 'scale': [0.051243], 'zero_point': [121], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>62</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[192, 1, 1, 768]</td>
+<td>71</td>
+<td>{'min': [-0.75349], 'max': [0.504298], 'scale': [0.004933], 'zero_point': [153], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>63</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>17</td>
+<td>{'scale': [0.000205], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>64</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/Relu6</td>
+<td>UINT8</td>
+<td>[1, 5, 5, 96]</td>
+<td>146</td>
+<td>{'min': [-4.910028], 'max': [6.269054], 'scale': [0.04384], 'zero_point': [112], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>65</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[96, 1, 1, 384]</td>
+<td>42</td>
+<td>{'min': [-0.346078], 'max': [0.407327], 'scale': [0.002955], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>66</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>16</td>
+<td>{'scale': [0.000299], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>67</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/Relu6</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 96]</td>
+<td>148</td>
+<td>{'min': [-4.633415], 'max': [5.730803], 'scale': [0.040644], 'zero_point': [114], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>68</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[96, 1, 1, 192]</td>
+<td>118</td>
+<td>{'min': [-0.345164], 'max': [0.558932], 'scale': [0.003545], 'zero_point': [97], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>69</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[48]</td>
+<td>14</td>
+<td>{'scale': [0.00013], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>70</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/Relu6</td>
+<td>UINT8</td>
+<td>[1, 2, 2, 48]</td>
+<td>72</td>
+<td>{'min': [-3.334431], 'max': [3.932919], 'scale': [0.028499], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>71</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[48, 1, 1, 192]</td>
+<td>80</td>
+<td>{'min': [-0.25523], 'max': [0.362631], 'scale': [0.002423], 'zero_point': [105], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>72</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>18</td>
+<td>{'scale': [0.000141], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>73</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Relu6</td>
+<td>UINT8</td>
+<td>[1, 5, 5, 384]</td>
+<td>100</td>
+<td>{'min': [-8.246266], 'max': [9.424305], 'scale': [0.069296], 'zero_point': [119], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>74</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 3, 3, 192]</td>
+<td>43</td>
+<td>{'min': [-0.33187], 'max': [0.368277], 'scale': [0.002746], 'zero_point': [121], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>75</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>149</td>
+<td>{'scale': [0.000232], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>76</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Relu6</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 192]</td>
+<td>141</td>
+<td>{'min': [-8.758585], 'max': [12.716791], 'scale': [0.084217], 'zero_point': [104], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>77</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[192, 3, 3, 96]</td>
+<td>41</td>
+<td>{'min': [-0.485902], 'max': [0.862137], 'scale': [0.005286], 'zero_point': [92], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>78</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>15</td>
+<td>{'scale': [0.000162], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>79</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Relu6</td>
+<td>UINT8</td>
+<td>[1, 2, 2, 192]</td>
+<td>150</td>
+<td>{'min': [-5.099391], 'max': [8.588449], 'scale': [0.053678], 'zero_point': [95], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>80</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[192, 3, 3, 96]</td>
+<td>39</td>
+<td>{'min': [-0.460121], 'max': [0.553788], 'scale': [0.003976], 'zero_point': [116], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>81</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>13</td>
+<td>{'scale': [0.000167], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>82</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Relu6</td>
+<td>UINT8</td>
+<td>[1, 1, 1, 96]</td>
+<td>108</td>
+<td>{'min': [-4.422213], 'max': [6.85443], 'scale': [0.044222], 'zero_point': [100], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>83</td><td>FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[96, 3, 3, 48]</td>
+<td>44</td>
+<td>{'min': [-0.573133], 'max': [0.922091], 'scale': [0.005864], 'zero_point': [98], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>84</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>36</td>
+<td>{'scale': [8.4e-05], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>85</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/Relu6</td>
+<td>UINT8</td>
+<td>[1, 150, 150, 24]</td>
+<td>82</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>86</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[24, 3, 3, 3]</td>
+<td>176</td>
+<td>{'min': [-1.638728], 'max': [1.11439], 'scale': [0.010797], 'zero_point': [152], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>87</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>137</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>88</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>49</td>
+<td>{'scale': [0.000455], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>89</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>98</td>
+<td>{'min': [-2.456389], 'max': [2.475557], 'scale': [0.019341], 'zero_point': [127], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>90</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>23</td>
+<td>{'scale': [0.000125], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>91</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>81</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>92</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 384]</td>
+<td>104</td>
+<td>{'min': [-0.551433], 'max': [0.806641], 'scale': [0.005326], 'zero_point': [104], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>93</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>97</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>94</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>110</td>
+<td>{'scale': [0.00041], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>95</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>99</td>
+<td>{'min': [-2.624428], 'max': [1.818642], 'scale': [0.017424], 'zero_point': [151], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>96</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>22</td>
+<td>{'scale': [0.000139], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>97</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>115</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>98</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 384]</td>
+<td>51</td>
+<td>{'min': [-0.821283], 'max': [0.682008], 'scale': [0.005895], 'zero_point': [139], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>99</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 384]</td>
+<td>125</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>100</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>37</td>
+<td>{'scale': [0.000558], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>101</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>73</td>
+<td>{'min': [-2.855571], 'max': [3.188507], 'scale': [0.023702], 'zero_point': [120], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>102</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[768]</td>
+<td>21</td>
+<td>{'scale': [0.00012], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>103</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 768]</td>
+<td>142</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>104</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[768, 1, 1, 384]</td>
+<td>48</td>
+<td>{'min': [-0.535145], 'max': [0.760128], 'scale': [0.005079], 'zero_point': [105], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>105</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 768]</td>
+<td>144</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>106</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[768]</td>
+<td>45</td>
+<td>{'scale': [0.000333], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>107</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 768]</td>
+<td>46</td>
+<td>{'min': [-1.687998], 'max': [1.922226], 'scale': [0.014158], 'zero_point': [119], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>108</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[768]</td>
+<td>20</td>
+<td>{'scale': [0.000119], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>109</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 10, 10, 768]</td>
+<td>103</td>
+<td>{'min': [0.0], 'max': [5.999535], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>110</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[768, 1, 1, 768]</td>
+<td>61</td>
+<td>{'min': [-0.716563], 'max': [0.57528], 'scale': [0.005066], 'zero_point': [141], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>111</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 150, 150, 24]</td>
+<td>114</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>112</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[24]</td>
+<td>35</td>
+<td>{'scale': [0.00097], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>113</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 24]</td>
+<td>68</td>
+<td>{'min': [-2.952785], 'max': [7.564634], 'scale': [0.041245], 'zero_point': [72], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>114</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[48]</td>
+<td>69</td>
+<td>{'scale': [0.000372], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>115</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 150, 150, 48]</td>
+<td>113</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>116</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[48, 1, 1, 24]</td>
+<td>67</td>
+<td>{'min': [-1.847729], 'max': [2.181499], 'scale': [0.015801], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>117</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 75, 75, 48]</td>
+<td>120</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>118</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[48]</td>
+<td>34</td>
+<td>{'scale': [0.000999], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>119</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 48]</td>
+<td>66</td>
+<td>{'min': [-4.981545], 'max': [5.849651], 'scale': [0.042475], 'zero_point': [117], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>120</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>33</td>
+<td>{'scale': [0.000191], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>121</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 75, 75, 96]</td>
+<td>123</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>122</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[96, 1, 1, 48]</td>
+<td>170</td>
+<td>{'min': [-0.967381], 'max': [1.102963], 'scale': [0.008119], 'zero_point': [119], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>123</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 75, 75, 96]</td>
+<td>124</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>124</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>52</td>
+<td>{'scale': [0.000849], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>125</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 96]</td>
+<td>65</td>
+<td>{'min': [-5.14778], 'max': [4.048323], 'scale': [0.036063], 'zero_point': [143], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>126</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>53</td>
+<td>{'scale': [0.000175], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>127</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 75, 75, 96]</td>
+<td>79</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>128</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[96, 1, 1, 96]</td>
+<td>64</td>
+<td>{'min': [-1.004724], 'max': [0.89726], 'scale': [0.007459], 'zero_point': [135], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>129</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 38, 38, 96]</td>
+<td>126</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>130</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[96]</td>
+<td>32</td>
+<td>{'scale': [0.000294], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>131</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 96]</td>
+<td>63</td>
+<td>{'min': [-1.568748], 'max': [1.621751], 'scale': [0.012512], 'zero_point': [125], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>132</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>75</td>
+<td>{'scale': [0.00016], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>133</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 38, 38, 192]</td>
+<td>70</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>134</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[192, 1, 1, 96]</td>
+<td>62</td>
+<td>{'min': [-0.728628], 'max': [1.007362], 'scale': [0.006808], 'zero_point': [107], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>135</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 38, 38, 192]</td>
+<td>122</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>136</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>31</td>
+<td>{'scale': [0.001067], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>137</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 192]</td>
+<td>60</td>
+<td>{'min': [-6.423401], 'max': [5.141709], 'scale': [0.045353], 'zero_point': [142], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>138</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>30</td>
+<td>{'scale': [0.000115], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>139</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 38, 38, 192]</td>
+<td>95</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>140</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[192, 1, 1, 192]</td>
+<td>59</td>
+<td>{'min': [-0.595722], 'max': [0.647931], 'scale': [0.004877], 'zero_point': [122], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>141</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 192]</td>
+<td>77</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>142</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[192]</td>
+<td>38</td>
+<td>{'scale': [0.000319], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>143</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 192]</td>
+<td>58</td>
+<td>{'min': [-1.431741], 'max': [2.029678], 'scale': [0.013574], 'zero_point': [105], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>144</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>29</td>
+<td>{'scale': [0.000145], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>145</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>129</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>146</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 192]</td>
+<td>57</td>
+<td>{'min': [-0.791094], 'max': [0.776309], 'scale': [0.006147], 'zero_point': [129], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>147</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>131</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>148</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>50</td>
+<td>{'scale': [0.000611], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>149</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>56</td>
+<td>{'min': [-3.117962], 'max': [3.505301], 'scale': [0.025974], 'zero_point': [120], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>150</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>28</td>
+<td>{'scale': [0.00013], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>151</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>136</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>152</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 384]</td>
+<td>55</td>
+<td>{'min': [-0.686513], 'max': [0.718541], 'scale': [0.00551], 'zero_point': [125], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>153</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>132</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>154</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>27</td>
+<td>{'scale': [0.000432], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>155</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>116</td>
+<td>{'min': [-1.967011], 'max': [2.710809], 'scale': [0.018344], 'zero_point': [107], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>156</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>26</td>
+<td>{'scale': [0.000123], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>157</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>134</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>158</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 384]</td>
+<td>54</td>
+<td>{'min': [-0.534141], 'max': [0.800755], 'scale': [0.005235], 'zero_point': [102], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>159</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>112</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>160</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/depthwise_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>25</td>
+<td>{'scale': [0.000493], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>161</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[1, 3, 3, 384]</td>
+<td>121</td>
+<td>{'min': [-2.130208], 'max': [3.215527], 'scale': [0.020964], 'zero_point': [102], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>162</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Conv2D_Fold_bias</td>
+<td>INT32</td>
+<td>[384]</td>
+<td>24</td>
+<td>{'scale': [0.000145], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>163</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6</td>
+<td>UINT8</td>
+<td>[1, 19, 19, 384]</td>
+<td>166</td>
+<td>{'min': [0.0], 'max': [5.999762], 'scale': [0.023528], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>164</td><td>FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/weights_quant/FakeQuantWithMinMaxVars</td>
+<td>UINT8</td>
+<td>[384, 1, 1, 384]</td>
+<td>139</td>
+<td>{'min': [-0.547524], 'max': [1.024533], 'scale': [0.006165], 'zero_point': [89], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>165</td><td>Squeeze</td>
+<td>UINT8</td>
+<td>[1, 1917, 4]</td>
+<td>147</td>
+<td>{'min': [-15.094324], 'max': [5.057784], 'scale': [0.079028], 'zero_point': [191], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>166</td><td>Squeeze_shape</td>
+<td>INT32</td>
+<td>[3]</td>
+<td>2</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>167</td><td>TFLite_Detection_PostProcess</td>
+<td>FLOAT32</td>
+<td>[]</td>
+<td>74</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>168</td><td>TFLite_Detection_PostProcess:1</td>
+<td>FLOAT32</td>
+<td>[]</td>
+<td>40</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>169</td><td>TFLite_Detection_PostProcess:2</td>
+<td>FLOAT32</td>
+<td>[]</td>
+<td>164</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>170</td><td>TFLite_Detection_PostProcess:3</td>
+<td>FLOAT32</td>
+<td>[]</td>
+<td>101</td>
+<td>{'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>171</td><td>anchors</td>
+<td>UINT8</td>
+<td>[1917, 4]</td>
+<td>90</td>
+<td>{'min': [0.0], 'max': [1.64553], 'scale': [0.006453], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>172</td><td>concat</td>
+<td>UINT8</td>
+<td>[1, 1917, 1, 4]</td>
+<td>88</td>
+<td>{'min': [-15.094324], 'max': [5.057784], 'scale': [0.079028], 'zero_point': [191], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>173</td><td>concat_1</td>
+<td>UINT8</td>
+<td>[1, 1917, 91]</td>
+<td>119</td>
+<td>{'min': [-11.091299], 'max': [1.591577], 'scale': [0.049737], 'zero_point': [223], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>174</td><td>convert_scores</td>
+<td>UINT8</td>
+<td>[1, 1917, 91]</td>
+<td>174</td>
+<td>{'min': [0.0], 'max': [0.996094], 'scale': [0.003906], 'zero_point': [0], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+<tr>
+<td>175</td><td>normalized_input_image_tensor</td>
+<td>UINT8</td>
+<td>[1, 300, 300, 3]</td>
+<td>127</td>
+<td>{'min': [-1.0], 'max': [0.992188], 'scale': [0.007812], 'zero_point': [128], 'details_type': 'NONE', 'quantized_dimension': 0}</td>
+</tr>
+</table>
+<h3>Ops</h3>
+<table><tr>
+<tr>
+<th>index</th><th>inputs</th><th>outputs</th><th>builtin_options</th><th>opcode_index</th></tr>
+<tr>
+<td>0</td><td><span class='tooltip'><span class='tooltipcontent'>175 normalized_input_image_tensor UINT8 [1, 300, 300, 3]<br>86 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 3, 3, 3]<br>84 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/Conv2D_Fold_bias INT32 [24]<br></span>[175, 86, 84]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>85 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/Relu6 UINT8 [1, 150, 150, 24]<br></span>[85]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>1</td><td><span class='tooltip'><span class='tooltipcontent'>85 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_0/Relu6 UINT8 [1, 150, 150, 24]<br>113 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 24]<br>112 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/depthwise_Fold_bias INT32 [24]<br></span>[85, 113, 112]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>111 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6 UINT8 [1, 150, 150, 24]<br></span>[111]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>2</td><td><span class='tooltip'><span class='tooltipcontent'>111 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_depthwise/Relu6 UINT8 [1, 150, 150, 24]<br>116 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [48, 1, 1, 24]<br>114 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Conv2D_Fold_bias INT32 [48]<br></span>[111, 116, 114]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>115 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6 UINT8 [1, 150, 150, 48]<br></span>[115]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>3</td><td><span class='tooltip'><span class='tooltipcontent'>115 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_1_pointwise/Relu6 UINT8 [1, 150, 150, 48]<br>119 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 48]<br>118 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/depthwise_Fold_bias INT32 [48]<br></span>[115, 119, 118]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>117 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6 UINT8 [1, 75, 75, 48]<br></span>[117]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>4</td><td><span class='tooltip'><span class='tooltipcontent'>117 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_depthwise/Relu6 UINT8 [1, 75, 75, 48]<br>122 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [96, 1, 1, 48]<br>120 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Conv2D_Fold_bias INT32 [96]<br></span>[117, 122, 120]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>121 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6 UINT8 [1, 75, 75, 96]<br></span>[121]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>5</td><td><span class='tooltip'><span class='tooltipcontent'>121 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_2_pointwise/Relu6 UINT8 [1, 75, 75, 96]<br>125 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 96]<br>124 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/depthwise_Fold_bias INT32 [96]<br></span>[121, 125, 124]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>123 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6 UINT8 [1, 75, 75, 96]<br></span>[123]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>6</td><td><span class='tooltip'><span class='tooltipcontent'>123 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_depthwise/Relu6 UINT8 [1, 75, 75, 96]<br>128 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [96, 1, 1, 96]<br>126 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Conv2D_Fold_bias INT32 [96]<br></span>[123, 128, 126]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>127 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6 UINT8 [1, 75, 75, 96]<br></span>[127]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>7</td><td><span class='tooltip'><span class='tooltipcontent'>127 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_3_pointwise/Relu6 UINT8 [1, 75, 75, 96]<br>131 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 96]<br>130 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/depthwise_Fold_bias INT32 [96]<br></span>[127, 131, 130]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>129 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6 UINT8 [1, 38, 38, 96]<br></span>[129]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>8</td><td><span class='tooltip'><span class='tooltipcontent'>129 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_depthwise/Relu6 UINT8 [1, 38, 38, 96]<br>134 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [192, 1, 1, 96]<br>132 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Conv2D_Fold_bias INT32 [192]<br></span>[129, 134, 132]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>133 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6 UINT8 [1, 38, 38, 192]<br></span>[133]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>9</td><td><span class='tooltip'><span class='tooltipcontent'>133 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_4_pointwise/Relu6 UINT8 [1, 38, 38, 192]<br>137 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 192]<br>136 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/depthwise_Fold_bias INT32 [192]<br></span>[133, 137, 136]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>135 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6 UINT8 [1, 38, 38, 192]<br></span>[135]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>10</td><td><span class='tooltip'><span class='tooltipcontent'>135 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_depthwise/Relu6 UINT8 [1, 38, 38, 192]<br>140 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [192, 1, 1, 192]<br>138 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Conv2D_Fold_bias INT32 [192]<br></span>[135, 140, 138]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>139 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6 UINT8 [1, 38, 38, 192]<br></span>[139]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>11</td><td><span class='tooltip'><span class='tooltipcontent'>139 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_5_pointwise/Relu6 UINT8 [1, 38, 38, 192]<br>143 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 192]<br>142 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/depthwise_Fold_bias INT32 [192]<br></span>[139, 143, 142]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>141 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6 UINT8 [1, 19, 19, 192]<br></span>[141]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>12</td><td><span class='tooltip'><span class='tooltipcontent'>141 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_depthwise/Relu6 UINT8 [1, 19, 19, 192]<br>146 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 192]<br>144 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[141, 146, 144]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>145 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[145]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>13</td><td><span class='tooltip'><span class='tooltipcontent'>145 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_6_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>149 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>148 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[145, 149, 148]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>147 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[147]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>14</td><td><span class='tooltip'><span class='tooltipcontent'>147 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br>152 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 384]<br>150 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[147, 152, 150]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>151 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[151]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>15</td><td><span class='tooltip'><span class='tooltipcontent'>151 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_7_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>155 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>154 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[151, 155, 154]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>153 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[153]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>16</td><td><span class='tooltip'><span class='tooltipcontent'>153 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br>158 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 384]<br>156 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[153, 158, 156]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>157 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[157]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>17</td><td><span class='tooltip'><span class='tooltipcontent'>157 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_8_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>161 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>160 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[157, 161, 160]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>159 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[159]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>18</td><td><span class='tooltip'><span class='tooltipcontent'>159 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br>164 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 384]<br>162 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[159, 164, 162]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>163 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[163]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>19</td><td><span class='tooltip'><span class='tooltipcontent'>163 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_9_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>89 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>88 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[163, 89, 88]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>87 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[87]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>20</td><td><span class='tooltip'><span class='tooltipcontent'>87 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br>92 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 384]<br>90 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[87, 92, 90]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>91 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[91]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>21</td><td><span class='tooltip'><span class='tooltipcontent'>91 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_10_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>95 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>94 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[91, 95, 94]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>93 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[93]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>22</td><td><span class='tooltip'><span class='tooltipcontent'>93 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_depthwise/Relu6 UINT8 [1, 19, 19, 384]<br>98 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 1, 1, 384]<br>96 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Conv2D_Fold_bias INT32 [384]<br></span>[93, 98, 96]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>97 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br></span>[97]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>23</td><td><span class='tooltip'><span class='tooltipcontent'>97 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>101 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 384]<br>100 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/depthwise_Fold_bias INT32 [384]<br></span>[97, 101, 100]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>99 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6 UINT8 [1, 10, 10, 384]<br></span>[99]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>24</td><td><span class='tooltip'><span class='tooltipcontent'>99 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_depthwise/Relu6 UINT8 [1, 10, 10, 384]<br>104 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [768, 1, 1, 384]<br>102 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Conv2D_Fold_bias INT32 [768]<br></span>[99, 104, 102]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>103 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br></span>[103]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>25</td><td><span class='tooltip'><span class='tooltipcontent'>103 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_12_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br>107 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [1, 3, 3, 768]<br>106 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/depthwise_Fold_bias INT32 [768]<br></span>[103, 107, 106]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>105 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6 UINT8 [1, 10, 10, 768]<br></span>[105]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'depth_multiplier': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>DEPTHWISE_CONV_2D (2)</td>
+</tr>
+<tr>
+<td>26</td><td><span class='tooltip'><span class='tooltipcontent'>105 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_depthwise/Relu6 UINT8 [1, 10, 10, 768]<br>110 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/weights_quant/FakeQuantWithMinMaxVars UINT8 [768, 1, 1, 768]<br>108 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Conv2D_Fold_bias INT32 [768]<br></span>[105, 110, 108]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>109 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br></span>[109]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>27</td><td><span class='tooltip'><span class='tooltipcontent'>109 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br>62 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/weights_quant/FakeQuantWithMinMaxVars UINT8 [192, 1, 1, 768]<br>60 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/Conv2D_Fold_bias INT32 [192]<br></span>[109, 62, 60]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>61 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/Relu6 UINT8 [1, 10, 10, 192]<br></span>[61]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>28</td><td><span class='tooltip'><span class='tooltipcontent'>61 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_2_1x1_192/Relu6 UINT8 [1, 10, 10, 192]<br>74 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/weights_quant/FakeQuantWithMinMaxVars UINT8 [384, 3, 3, 192]<br>72 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Conv2D_Fold_bias INT32 [384]<br></span>[61, 74, 72]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>73 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Relu6 UINT8 [1, 5, 5, 384]<br></span>[73]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>29</td><td><span class='tooltip'><span class='tooltipcontent'>73 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Relu6 UINT8 [1, 5, 5, 384]<br>65 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/weights_quant/FakeQuantWithMinMaxVars UINT8 [96, 1, 1, 384]<br>63 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/Conv2D_Fold_bias INT32 [96]<br></span>[73, 65, 63]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>64 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/Relu6 UINT8 [1, 5, 5, 96]<br></span>[64]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>30</td><td><span class='tooltip'><span class='tooltipcontent'>64 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_3_1x1_96/Relu6 UINT8 [1, 5, 5, 96]<br>77 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/weights_quant/FakeQuantWithMinMaxVars UINT8 [192, 3, 3, 96]<br>75 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Conv2D_Fold_bias INT32 [192]<br></span>[64, 77, 75]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>76 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Relu6 UINT8 [1, 3, 3, 192]<br></span>[76]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>31</td><td><span class='tooltip'><span class='tooltipcontent'>76 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Relu6 UINT8 [1, 3, 3, 192]<br>68 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/weights_quant/FakeQuantWithMinMaxVars UINT8 [96, 1, 1, 192]<br>66 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/Conv2D_Fold_bias INT32 [96]<br></span>[76, 68, 66]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>67 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/Relu6 UINT8 [1, 3, 3, 96]<br></span>[67]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>32</td><td><span class='tooltip'><span class='tooltipcontent'>67 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_4_1x1_96/Relu6 UINT8 [1, 3, 3, 96]<br>80 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/weights_quant/FakeQuantWithMinMaxVars UINT8 [192, 3, 3, 96]<br>78 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Conv2D_Fold_bias INT32 [192]<br></span>[67, 80, 78]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>79 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Relu6 UINT8 [1, 2, 2, 192]<br></span>[79]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>33</td><td><span class='tooltip'><span class='tooltipcontent'>79 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Relu6 UINT8 [1, 2, 2, 192]<br>71 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/weights_quant/FakeQuantWithMinMaxVars UINT8 [48, 1, 1, 192]<br>69 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/Conv2D_Fold_bias INT32 [48]<br></span>[79, 71, 69]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>70 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/Relu6 UINT8 [1, 2, 2, 48]<br></span>[70]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>34</td><td><span class='tooltip'><span class='tooltipcontent'>70 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_1_Conv2d_5_1x1_48/Relu6 UINT8 [1, 2, 2, 48]<br>83 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/weights_quant/FakeQuantWithMinMaxVars UINT8 [96, 3, 3, 48]<br>81 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Conv2D_Fold_bias INT32 [96]<br></span>[70, 83, 81]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>82 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Relu6 UINT8 [1, 1, 1, 96]<br></span>[82]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 2, 'stride_h': 2, 'fused_activation_function': 'RELU6', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>35</td><td><span class='tooltip'><span class='tooltipcontent'>97 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>2 BoxPredictor_0/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [12, 1, 1, 384]<br>1 BoxPredictor_0/BoxEncodingPredictor/Conv2D_bias INT32 [12]<br></span>[97, 2, 1]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>0 BoxPredictor_0/BoxEncodingPredictor/BiasAdd UINT8 [1, 19, 19, 12]<br></span>[0]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>36</td><td><span class='tooltip'><span class='tooltipcontent'>0 BoxPredictor_0/BoxEncodingPredictor/BiasAdd UINT8 [1, 19, 19, 12]<br>8 BoxPredictor_0/stack INT32 [4]<br></span>[0, 8]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>6 BoxPredictor_0/Reshape UINT8 [1, 1083, 1, 4]<br></span>[6]</span></td>
+<td>{'new_shape': [1, 1083, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>37</td><td><span class='tooltip'><span class='tooltipcontent'>97 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_11_pointwise/Relu6 UINT8 [1, 19, 19, 384]<br>5 BoxPredictor_0/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [273, 1, 1, 384]<br>4 BoxPredictor_0/ClassPredictor/Conv2D_bias INT32 [273]<br></span>[97, 5, 4]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>3 BoxPredictor_0/ClassPredictor/BiasAdd UINT8 [1, 19, 19, 273]<br></span>[3]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>38</td><td><span class='tooltip'><span class='tooltipcontent'>3 BoxPredictor_0/ClassPredictor/BiasAdd UINT8 [1, 19, 19, 273]<br>9 BoxPredictor_0/stack_1 INT32 [3]<br></span>[3, 9]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>7 BoxPredictor_0/Reshape_1 UINT8 [1, 1083, 91]<br></span>[7]</span></td>
+<td>{'new_shape': [1, 1083, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>39</td><td><span class='tooltip'><span class='tooltipcontent'>109 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br>12 BoxPredictor_1/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 1, 1, 768]<br>11 BoxPredictor_1/BoxEncodingPredictor/Conv2D_bias INT32 [24]<br></span>[109, 12, 11]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>10 BoxPredictor_1/BoxEncodingPredictor/BiasAdd UINT8 [1, 10, 10, 24]<br></span>[10]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>40</td><td><span class='tooltip'><span class='tooltipcontent'>10 BoxPredictor_1/BoxEncodingPredictor/BiasAdd UINT8 [1, 10, 10, 24]<br>18 BoxPredictor_1/stack INT32 [4]<br></span>[10, 18]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>16 BoxPredictor_1/Reshape UINT8 [1, 600, 1, 4]<br></span>[16]</span></td>
+<td>{'new_shape': [1, 600, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>41</td><td><span class='tooltip'><span class='tooltipcontent'>109 FeatureExtractor/MobilenetV1/MobilenetV1/Conv2d_13_pointwise/Relu6 UINT8 [1, 10, 10, 768]<br>15 BoxPredictor_1/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [546, 1, 1, 768]<br>14 BoxPredictor_1/ClassPredictor/Conv2D_bias INT32 [546]<br></span>[109, 15, 14]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>13 BoxPredictor_1/ClassPredictor/BiasAdd UINT8 [1, 10, 10, 546]<br></span>[13]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>42</td><td><span class='tooltip'><span class='tooltipcontent'>13 BoxPredictor_1/ClassPredictor/BiasAdd UINT8 [1, 10, 10, 546]<br>19 BoxPredictor_1/stack_1 INT32 [3]<br></span>[13, 19]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>17 BoxPredictor_1/Reshape_1 UINT8 [1, 600, 91]<br></span>[17]</span></td>
+<td>{'new_shape': [1, 600, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>43</td><td><span class='tooltip'><span class='tooltipcontent'>73 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Relu6 UINT8 [1, 5, 5, 384]<br>22 BoxPredictor_2/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 1, 1, 384]<br>21 BoxPredictor_2/BoxEncodingPredictor/Conv2D_bias INT32 [24]<br></span>[73, 22, 21]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>20 BoxPredictor_2/BoxEncodingPredictor/BiasAdd UINT8 [1, 5, 5, 24]<br></span>[20]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>44</td><td><span class='tooltip'><span class='tooltipcontent'>20 BoxPredictor_2/BoxEncodingPredictor/BiasAdd UINT8 [1, 5, 5, 24]<br>28 BoxPredictor_2/stack INT32 [4]<br></span>[20, 28]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>26 BoxPredictor_2/Reshape UINT8 [1, 150, 1, 4]<br></span>[26]</span></td>
+<td>{'new_shape': [1, 150, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>45</td><td><span class='tooltip'><span class='tooltipcontent'>73 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_2_3x3_s2_384/Relu6 UINT8 [1, 5, 5, 384]<br>25 BoxPredictor_2/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [546, 1, 1, 384]<br>24 BoxPredictor_2/ClassPredictor/Conv2D_bias INT32 [546]<br></span>[73, 25, 24]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>23 BoxPredictor_2/ClassPredictor/BiasAdd UINT8 [1, 5, 5, 546]<br></span>[23]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>46</td><td><span class='tooltip'><span class='tooltipcontent'>23 BoxPredictor_2/ClassPredictor/BiasAdd UINT8 [1, 5, 5, 546]<br>29 BoxPredictor_2/stack_1 INT32 [3]<br></span>[23, 29]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>27 BoxPredictor_2/Reshape_1 UINT8 [1, 150, 91]<br></span>[27]</span></td>
+<td>{'new_shape': [1, 150, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>47</td><td><span class='tooltip'><span class='tooltipcontent'>76 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Relu6 UINT8 [1, 3, 3, 192]<br>32 BoxPredictor_3/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 1, 1, 192]<br>31 BoxPredictor_3/BoxEncodingPredictor/Conv2D_bias INT32 [24]<br></span>[76, 32, 31]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>30 BoxPredictor_3/BoxEncodingPredictor/BiasAdd UINT8 [1, 3, 3, 24]<br></span>[30]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>48</td><td><span class='tooltip'><span class='tooltipcontent'>30 BoxPredictor_3/BoxEncodingPredictor/BiasAdd UINT8 [1, 3, 3, 24]<br>38 BoxPredictor_3/stack INT32 [4]<br></span>[30, 38]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>36 BoxPredictor_3/Reshape UINT8 [1, 54, 1, 4]<br></span>[36]</span></td>
+<td>{'new_shape': [1, 54, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>49</td><td><span class='tooltip'><span class='tooltipcontent'>76 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_3_3x3_s2_192/Relu6 UINT8 [1, 3, 3, 192]<br>35 BoxPredictor_3/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [546, 1, 1, 192]<br>34 BoxPredictor_3/ClassPredictor/Conv2D_bias INT32 [546]<br></span>[76, 35, 34]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>33 BoxPredictor_3/ClassPredictor/BiasAdd UINT8 [1, 3, 3, 546]<br></span>[33]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>50</td><td><span class='tooltip'><span class='tooltipcontent'>33 BoxPredictor_3/ClassPredictor/BiasAdd UINT8 [1, 3, 3, 546]<br>39 BoxPredictor_3/stack_1 INT32 [3]<br></span>[33, 39]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>37 BoxPredictor_3/Reshape_1 UINT8 [1, 54, 91]<br></span>[37]</span></td>
+<td>{'new_shape': [1, 54, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>51</td><td><span class='tooltip'><span class='tooltipcontent'>79 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Relu6 UINT8 [1, 2, 2, 192]<br>42 BoxPredictor_4/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 1, 1, 192]<br>41 BoxPredictor_4/BoxEncodingPredictor/Conv2D_bias INT32 [24]<br></span>[79, 42, 41]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>40 BoxPredictor_4/BoxEncodingPredictor/BiasAdd UINT8 [1, 2, 2, 24]<br></span>[40]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>52</td><td><span class='tooltip'><span class='tooltipcontent'>40 BoxPredictor_4/BoxEncodingPredictor/BiasAdd UINT8 [1, 2, 2, 24]<br>48 BoxPredictor_4/stack INT32 [4]<br></span>[40, 48]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>46 BoxPredictor_4/Reshape UINT8 [1, 24, 1, 4]<br></span>[46]</span></td>
+<td>{'new_shape': [1, 24, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>53</td><td><span class='tooltip'><span class='tooltipcontent'>79 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_4_3x3_s2_192/Relu6 UINT8 [1, 2, 2, 192]<br>45 BoxPredictor_4/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [546, 1, 1, 192]<br>44 BoxPredictor_4/ClassPredictor/Conv2D_bias INT32 [546]<br></span>[79, 45, 44]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>43 BoxPredictor_4/ClassPredictor/BiasAdd UINT8 [1, 2, 2, 546]<br></span>[43]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>54</td><td><span class='tooltip'><span class='tooltipcontent'>43 BoxPredictor_4/ClassPredictor/BiasAdd UINT8 [1, 2, 2, 546]<br>49 BoxPredictor_4/stack_1 INT32 [3]<br></span>[43, 49]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>47 BoxPredictor_4/Reshape_1 UINT8 [1, 24, 91]<br></span>[47]</span></td>
+<td>{'new_shape': [1, 24, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>55</td><td><span class='tooltip'><span class='tooltipcontent'>82 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Relu6 UINT8 [1, 1, 1, 96]<br>52 BoxPredictor_5/BoxEncodingPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [24, 1, 1, 96]<br>51 BoxPredictor_5/BoxEncodingPredictor/Conv2D_bias INT32 [24]<br></span>[82, 52, 51]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>50 BoxPredictor_5/BoxEncodingPredictor/BiasAdd UINT8 [1, 1, 1, 24]<br></span>[50]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>56</td><td><span class='tooltip'><span class='tooltipcontent'>50 BoxPredictor_5/BoxEncodingPredictor/BiasAdd UINT8 [1, 1, 1, 24]<br>58 BoxPredictor_5/stack INT32 [4]<br></span>[50, 58]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>56 BoxPredictor_5/Reshape UINT8 [1, 6, 1, 4]<br></span>[56]</span></td>
+<td>{'new_shape': [1, 6, 1, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>57</td><td><span class='tooltip'><span class='tooltipcontent'>6 BoxPredictor_0/Reshape UINT8 [1, 1083, 1, 4]<br>16 BoxPredictor_1/Reshape UINT8 [1, 600, 1, 4]<br>26 BoxPredictor_2/Reshape UINT8 [1, 150, 1, 4]<br>36 BoxPredictor_3/Reshape UINT8 [1, 54, 1, 4]<br>46 BoxPredictor_4/Reshape UINT8 [1, 24, 1, 4]<br>56 BoxPredictor_5/Reshape UINT8 [1, 6, 1, 4]<br></span>[6, 16, 26, 36, 46, 56]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>172 concat UINT8 [1, 1917, 1, 4]<br></span>[172]</span></td>
+<td>{'axis': 1, 'fused_activation_function': 'NONE'}</td>
+<td>CONCATENATION (1)</td>
+</tr>
+<tr>
+<td>58</td><td><span class='tooltip'><span class='tooltipcontent'>172 concat UINT8 [1, 1917, 1, 4]<br>166 Squeeze_shape INT32 [3]<br></span>[172, 166]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>165 Squeeze UINT8 [1, 1917, 4]<br></span>[165]</span></td>
+<td>{'new_shape': [1, 1917, 4]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>59</td><td><span class='tooltip'><span class='tooltipcontent'>82 FeatureExtractor/MobilenetV1/Conv2d_13_pointwise_2_Conv2d_5_3x3_s2_96/Relu6 UINT8 [1, 1, 1, 96]<br>55 BoxPredictor_5/ClassPredictor/weights_quant/FakeQuantWithMinMaxVars UINT8 [546, 1, 1, 96]<br>54 BoxPredictor_5/ClassPredictor/Conv2D_bias INT32 [546]<br></span>[82, 55, 54]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>53 BoxPredictor_5/ClassPredictor/BiasAdd UINT8 [1, 1, 1, 546]<br></span>[53]</span></td>
+<td>{'padding': 'SAME', 'stride_w': 1, 'stride_h': 1, 'fused_activation_function': 'NONE', 'dilation_w_factor': 1, 'dilation_h_factor': 1}</td>
+<td>CONV_2D (0)</td>
+</tr>
+<tr>
+<td>60</td><td><span class='tooltip'><span class='tooltipcontent'>53 BoxPredictor_5/ClassPredictor/BiasAdd UINT8 [1, 1, 1, 546]<br>59 BoxPredictor_5/stack_1 INT32 [3]<br></span>[53, 59]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>57 BoxPredictor_5/Reshape_1 UINT8 [1, 6, 91]<br></span>[57]</span></td>
+<td>{'new_shape': [1, 6, 91]}</td>
+<td>RESHAPE (4)</td>
+</tr>
+<tr>
+<td>61</td><td><span class='tooltip'><span class='tooltipcontent'>7 BoxPredictor_0/Reshape_1 UINT8 [1, 1083, 91]<br>17 BoxPredictor_1/Reshape_1 UINT8 [1, 600, 91]<br>27 BoxPredictor_2/Reshape_1 UINT8 [1, 150, 91]<br>37 BoxPredictor_3/Reshape_1 UINT8 [1, 54, 91]<br>47 BoxPredictor_4/Reshape_1 UINT8 [1, 24, 91]<br>57 BoxPredictor_5/Reshape_1 UINT8 [1, 6, 91]<br></span>[7, 17, 27, 37, 47, 57]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>173 concat_1 UINT8 [1, 1917, 91]<br></span>[173]</span></td>
+<td>{'axis': 1, 'fused_activation_function': 'NONE'}</td>
+<td>CONCATENATION (1)</td>
+</tr>
+<tr>
+<td>62</td><td><span class='tooltip'><span class='tooltipcontent'>173 concat_1 UINT8 [1, 1917, 91]<br></span>[173]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>174 convert_scores UINT8 [1, 1917, 91]<br></span>[174]</span></td>
+<td>None</td>
+<td>LOGISTIC (3)</td>
+</tr>
+<tr>
+<td>63</td><td><span class='tooltip'><span class='tooltipcontent'>165 Squeeze UINT8 [1, 1917, 4]<br>174 convert_scores UINT8 [1, 1917, 91]<br>171 anchors UINT8 [1917, 4]<br></span>[165, 174, 171]</span></td>
+<td><span class='tooltip'><span class='tooltipcontent'>167 TFLite_Detection_PostProcess FLOAT32 []<br>168 TFLite_Detection_PostProcess:1 FLOAT32 []<br>169 TFLite_Detection_PostProcess:2 FLOAT32 []<br>170 TFLite_Detection_PostProcess:3 FLOAT32 []<br></span>[167, 168, 169, 170]</span></td>
+<td>None</td>
+<td>CUSTOM (5)</td>
+</tr>
+</table>
+<svg id='subgraph0' width='1600' height='900'></svg>
+
+  <script>
+    // Build graph data
+    var graph = {"nodes": [{"id": "o0", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 200}, {"id": "o1", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 400}, {"id": "o2", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 600}, {"id": "o3", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 800}, {"id": "o4", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 1000}, {"id": "o5", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 1200}, {"id": "o6", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 1400}, {"id": "o7", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 1600}, {"id": "o8", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 1800}, {"id": "o9", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 2000}, {"id": "o10", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 2200}, {"id": "o11", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 2400}, {"id": "o12", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 2600}, {"id": "o13", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 2800}, {"id": "o14", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 3000}, {"id": "o15", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 3200}, {"id": "o16", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 3400}, {"id": "o17", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 3600}, {"id": "o18", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 3800}, {"id": "o19", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 4000}, {"id": "o20", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 4200}, {"id": "o21", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 4400}, {"id": "o22", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 4600}, {"id": "o23", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 4800}, {"id": "o24", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 5000}, {"id": "o25", "name": "DEPTHWISE_CONV_2D (2)", "group": 2, "x": 200, "y": 5200}, {"id": "o26", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 5400}, {"id": "o27", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 5600}, {"id": "o28", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 5800}, {"id": "o29", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 6000}, {"id": "o30", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 6200}, {"id": "o31", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 6400}, {"id": "o32", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 6600}, {"id": "o33", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 6800}, {"id": "o34", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 7000}, {"id": "o35", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 7200}, {"id": "o36", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 7400}, {"id": "o37", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 7600}, {"id": "o38", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 7800}, {"id": "o39", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 8000}, {"id": "o40", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 8200}, {"id": "o41", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 8400}, {"id": "o42", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 8600}, {"id": "o43", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 8800}, {"id": "o44", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 9000}, {"id": "o45", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 9200}, {"id": "o46", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 9400}, {"id": "o47", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 9600}, {"id": "o48", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 9800}, {"id": "o49", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 10000}, {"id": "o50", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 10200}, {"id": "o51", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 10400}, {"id": "o52", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 10600}, {"id": "o53", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 10800}, {"id": "o54", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 11000}, {"id": "o55", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 11200}, {"id": "o56", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 11400}, {"id": "o57", "name": "CONCATENATION (1)", "group": 2, "x": 200, "y": 11600}, {"id": "o58", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 11800}, {"id": "o59", "name": "CONV_2D (0)", "group": 2, "x": 200, "y": 12000}, {"id": "o60", "name": "RESHAPE (4)", "group": 2, "x": 200, "y": 12200}, {"id": "o61", "name": "CONCATENATION (1)", "group": 2, "x": 200, "y": 12400}, {"id": "o62", "name": "LOGISTIC (3)", "group": 2, "x": 200, "y": 12600}, {"id": "o63", "name": "CUSTOM (5)", "group": 2, "x": 200, "y": 12800}, {"id": "t0", "name": "[] (0)", "group": 1, "x": 170, "y": 7300.0}, {"id": "t1", "name": "[] (1)", "group": 1, "x": 510, "y": 7100.0}, {"id": "t2", "name": "[] (2)", "group": 1, "x": 340, "y": 7100.0}, {"id": "t3", "name": "[] (3)", "group": 1, "x": 170, "y": 7700.0}, {"id": "t4", "name": "[] (4)", "group": 1, "x": 510, "y": 7500.0}, {"id": "t5", "name": "[] (5)", "group": 1, "x": 340, "y": 7500.0}, {"id": "t6", "name": "[] (6)", "group": 1, "x": 170, "y": 11500.0}, {"id": "t7", "name": "[] (7)", "group": 1, "x": 170, "y": 12300.0}, {"id": "t8", "name": "[] (8)", "group": 1, "x": 340, "y": 7300.0}, {"id": "t9", "name": "[] (9)", "group": 1, "x": 340, "y": 7700.0}, {"id": "t10", "name": "[] (10)", "group": 1, "x": 170, "y": 8100.0}, {"id": "t11", "name": "[] (11)", "group": 1, "x": 510, "y": 7900.0}, {"id": "t12", "name": "[] (12)", "group": 1, "x": 340, "y": 7900.0}, {"id": "t13", "name": "[] (13)", "group": 1, "x": 170, "y": 8500.0}, {"id": "t14", "name": "[] (14)", "group": 1, "x": 510, "y": 8300.0}, {"id": "t15", "name": "[] (15)", "group": 1, "x": 340, "y": 8300.0}, {"id": "t16", "name": "[] (16)", "group": 1, "x": 340, "y": 11500.0}, {"id": "t17", "name": "[] (17)", "group": 1, "x": 340, "y": 12300.0}, {"id": "t18", "name": "[] (18)", "group": 1, "x": 340, "y": 8100.0}, {"id": "t19", "name": "[] (19)", "group": 1, "x": 340, "y": 8500.0}, {"id": "t20", "name": "[] (20)", "group": 1, "x": 170, "y": 8900.0}, {"id": "t21", "name": "[] (21)", "group": 1, "x": 510, "y": 8700.0}, {"id": "t22", "name": "[] (22)", "group": 1, "x": 340, "y": 8700.0}, {"id": "t23", "name": "[] (23)", "group": 1, "x": 170, "y": 9300.0}, {"id": "t24", "name": "[] (24)", "group": 1, "x": 510, "y": 9100.0}, {"id": "t25", "name": "[] (25)", "group": 1, "x": 340, "y": 9100.0}, {"id": "t26", "name": "[] (26)", "group": 1, "x": 510, "y": 11500.0}, {"id": "t27", "name": "[] (27)", "group": 1, "x": 510, "y": 12300.0}, {"id": "t28", "name": "[] (28)", "group": 1, "x": 340, "y": 8900.0}, {"id": "t29", "name": "[] (29)", "group": 1, "x": 340, "y": 9300.0}, {"id": "t30", "name": "[] (30)", "group": 1, "x": 170, "y": 9700.0}, {"id": "t31", "name": "[] (31)", "group": 1, "x": 510, "y": 9500.0}, {"id": "t32", "name": "[] (32)", "group": 1, "x": 340, "y": 9500.0}, {"id": "t33", "name": "[] (33)", "group": 1, "x": 170, "y": 10100.0}, {"id": "t34", "name": "[] (34)", "group": 1, "x": 510, "y": 9900.0}, {"id": "t35", "name": "[] (35)", "group": 1, "x": 340, "y": 9900.0}, {"id": "t36", "name": "[] (36)", "group": 1, "x": 680, "y": 11500.0}, {"id": "t37", "name": "[] (37)", "group": 1, "x": 680, "y": 12300.0}, {"id": "t38", "name": "[] (38)", "group": 1, "x": 340, "y": 9700.0}, {"id": "t39", "name": "[] (39)", "group": 1, "x": 340, "y": 10100.0}, {"id": "t40", "name": "[] (40)", "group": 1, "x": 170, "y": 10500.0}, {"id": "t41", "name": "[] (41)", "group": 1, "x": 510, "y": 10300.0}, {"id": "t42", "name": "[] (42)", "group": 1, "x": 340, "y": 10300.0}, {"id": "t43", "name": "[] (43)", "group": 1, "x": 170, "y": 10900.0}, {"id": "t44", "name": "[] (44)", "group": 1, "x": 510, "y": 10700.0}, {"id": "t45", "name": "[] (45)", "group": 1, "x": 340, "y": 10700.0}, {"id": "t46", "name": "[] (46)", "group": 1, "x": 850, "y": 11500.0}, {"id": "t47", "name": "[] (47)", "group": 1, "x": 850, "y": 12300.0}, {"id": "t48", "name": "[] (48)", "group": 1, "x": 340, "y": 10500.0}, {"id": "t49", "name": "[] (49)", "group": 1, "x": 340, "y": 10900.0}, {"id": "t50", "name": "[] (50)", "group": 1, "x": 170, "y": 11300.0}, {"id": "t51", "name": "[] (51)", "group": 1, "x": 510, "y": 11100.0}, {"id": "t52", "name": "[] (52)", "group": 1, "x": 340, "y": 11100.0}, {"id": "t53", "name": "[] (53)", "group": 1, "x": 170, "y": 12100.0}, {"id": "t54", "name": "[] (54)", "group": 1, "x": 510, "y": 11900.0}, {"id": "t55", "name": "[] (55)", "group": 1, "x": 340, "y": 11900.0}, {"id": "t56", "name": "[] (56)", "group": 1, "x": 1020, "y": 11500.0}, {"id": "t57", "name": "[] (57)", "group": 1, "x": 1020, "y": 12300.0}, {"id": "t58", "name": "[] (58)", "group": 1, "x": 340, "y": 11300.0}, {"id": "t59", "name": "[] (59)", "group": 1, "x": 340, "y": 12100.0}, {"id": "t60", "name": "[] (60)", "group": 1, "x": 510, "y": 5500.0}, {"id": "t61", "name": "[] (61)", "group": 1, "x": 170, "y": 5700.0}, {"id": "t62", "name": "[] (62)", "group": 1, "x": 340, "y": 5500.0}, {"id": "t63", "name": "[] (63)", "group": 1, "x": 510, "y": 5900.0}, {"id": "t64", "name": "[] (64)", "group": 1, "x": 170, "y": 6100.0}, {"id": "t65", "name": "[] (65)", "group": 1, "x": 340, "y": 5900.0}, {"id": "t66", "name": "[] (66)", "group": 1, "x": 510, "y": 6300.0}, {"id": "t67", "name": "[] (67)", "group": 1, "x": 170, "y": 6500.0}, {"id": "t68", "name": "[] (68)", "group": 1, "x": 340, "y": 6300.0}, {"id": "t69", "name": "[] (69)", "group": 1, "x": 510, "y": 6700.0}, {"id": "t70", "name": "[] (70)", "group": 1, "x": 170, "y": 6900.0}, {"id": "t71", "name": "[] (71)", "group": 1, "x": 340, "y": 6700.0}, {"id": "t72", "name": "[] (72)", "group": 1, "x": 510, "y": 5700.0}, {"id": "t73", "name": "[] (73)", "group": 1, "x": 170, "y": 5900.0}, {"id": "t74", "name": "[] (74)", "group": 1, "x": 340, "y": 5700.0}, {"id": "t75", "name": "[] (75)", "group": 1, "x": 510, "y": 6100.0}, {"id": "t76", "name": "[] (76)", "group": 1, "x": 170, "y": 6300.0}, {"id": "t77", "name": "[] (77)", "group": 1, "x": 340, "y": 6100.0}, {"id": "t78", "name": "[] (78)", "group": 1, "x": 510, "y": 6500.0}, {"id": "t79", "name": "[] (79)", "group": 1, "x": 170, "y": 6700.0}, {"id": "t80", "name": "[] (80)", "group": 1, "x": 340, "y": 6500.0}, {"id": "t81", "name": "[] (81)", "group": 1, "x": 510, "y": 6900.0}, {"id": "t82", "name": "[] (82)", "group": 1, "x": 170, "y": 11100.0}, {"id": "t83", "name": "[] (83)", "group": 1, "x": 340, "y": 6900.0}, {"id": "t84", "name": "[] (84)", "group": 1, "x": 510, "y": 100.0}, {"id": "t85", "name": "[] (85)", "group": 1, "x": 170, "y": 300.0}, {"id": "t86", "name": "[] (86)", "group": 1, "x": 340, "y": 100.0}, {"id": "t87", "name": "[] (87)", "group": 1, "x": 170, "y": 4100.0}, {"id": "t88", "name": "[] (88)", "group": 1, "x": 510, "y": 3900.0}, {"id": "t89", "name": "[] (89)", "group": 1, "x": 340, "y": 3900.0}, {"id": "t90", "name": "[] (90)", "group": 1, "x": 510, "y": 4100.0}, {"id": "t91", "name": "[] (91)", "group": 1, "x": 170, "y": 4300.0}, {"id": "t92", "name": "[] (92)", "group": 1, "x": 340, "y": 4100.0}, {"id": "t93", "name": "[] (93)", "group": 1, "x": 170, "y": 4500.0}, {"id": "t94", "name": "[] (94)", "group": 1, "x": 510, "y": 4300.0}, {"id": "t95", "name": "[] (95)", "group": 1, "x": 340, "y": 4300.0}, {"id": "t96", "name": "[] (96)", "group": 1, "x": 510, "y": 4500.0}, {"id": "t97", "name": "[] (97)", "group": 1, "x": 170, "y": 4700.0}, {"id": "t98", "name": "[] (98)", "group": 1, "x": 340, "y": 4500.0}, {"id": "t99", "name": "[] (99)", "group": 1, "x": 170, "y": 4900.0}, {"id": "t100", "name": "[] (100)", "group": 1, "x": 510, "y": 4700.0}, {"id": "t101", "name": "[] (101)", "group": 1, "x": 340, "y": 4700.0}, {"id": "t102", "name": "[] (102)", "group": 1, "x": 510, "y": 4900.0}, {"id": "t103", "name": "[] (103)", "group": 1, "x": 170, "y": 5100.0}, {"id": "t104", "name": "[] (104)", "group": 1, "x": 340, "y": 4900.0}, {"id": "t105", "name": "[] (105)", "group": 1, "x": 170, "y": 5300.0}, {"id": "t106", "name": "[] (106)", "group": 1, "x": 510, "y": 5100.0}, {"id": "t107", "name": "[] (107)", "group": 1, "x": 340, "y": 5100.0}, {"id": "t108", "name": "[] (108)", "group": 1, "x": 510, "y": 5300.0}, {"id": "t109", "name": "[] (109)", "group": 1, "x": 170, "y": 5500.0}, {"id": "t110", "name": "[] (110)", "group": 1, "x": 340, "y": 5300.0}, {"id": "t111", "name": "[] (111)", "group": 1, "x": 170, "y": 500.0}, {"id": "t112", "name": "[] (112)", "group": 1, "x": 510, "y": 300.0}, {"id": "t113", "name": "[] (113)", "group": 1, "x": 340, "y": 300.0}, {"id": "t114", "name": "[] (114)", "group": 1, "x": 510, "y": 500.0}, {"id": "t115", "name": "[] (115)", "group": 1, "x": 170, "y": 700.0}, {"id": "t116", "name": "[] (116)", "group": 1, "x": 340, "y": 500.0}, {"id": "t117", "name": "[] (117)", "group": 1, "x": 170, "y": 900.0}, {"id": "t118", "name": "[] (118)", "group": 1, "x": 510, "y": 700.0}, {"id": "t119", "name": "[] (119)", "group": 1, "x": 340, "y": 700.0}, {"id": "t120", "name": "[] (120)", "group": 1, "x": 510, "y": 900.0}, {"id": "t121", "name": "[] (121)", "group": 1, "x": 170, "y": 1100.0}, {"id": "t122", "name": "[] (122)", "group": 1, "x": 340, "y": 900.0}, {"id": "t123", "name": "[] (123)", "group": 1, "x": 170, "y": 1300.0}, {"id": "t124", "name": "[] (124)", "group": 1, "x": 510, "y": 1100.0}, {"id": "t125", "name": "[] (125)", "group": 1, "x": 340, "y": 1100.0}, {"id": "t126", "name": "[] (126)", "group": 1, "x": 510, "y": 1300.0}, {"id": "t127", "name": "[] (127)", "group": 1, "x": 170, "y": 1500.0}, {"id": "t128", "name": "[] (128)", "group": 1, "x": 340, "y": 1300.0}, {"id": "t129", "name": "[] (129)", "group": 1, "x": 170, "y": 1700.0}, {"id": "t130", "name": "[] (130)", "group": 1, "x": 510, "y": 1500.0}, {"id": "t131", "name": "[] (131)", "group": 1, "x": 340, "y": 1500.0}, {"id": "t132", "name": "[] (132)", "group": 1, "x": 510, "y": 1700.0}, {"id": "t133", "name": "[] (133)", "group": 1, "x": 170, "y": 1900.0}, {"id": "t134", "name": "[] (134)", "group": 1, "x": 340, "y": 1700.0}, {"id": "t135", "name": "[] (135)", "group": 1, "x": 170, "y": 2100.0}, {"id": "t136", "name": "[] (136)", "group": 1, "x": 510, "y": 1900.0}, {"id": "t137", "name": "[] (137)", "group": 1, "x": 340, "y": 1900.0}, {"id": "t138", "name": "[] (138)", "group": 1, "x": 510, "y": 2100.0}, {"id": "t139", "name": "[] (139)", "group": 1, "x": 170, "y": 2300.0}, {"id": "t140", "name": "[] (140)", "group": 1, "x": 340, "y": 2100.0}, {"id": "t141", "name": "[] (141)", "group": 1, "x": 170, "y": 2500.0}, {"id": "t142", "name": "[] (142)", "group": 1, "x": 510, "y": 2300.0}, {"id": "t143", "name": "[] (143)", "group": 1, "x": 340, "y": 2300.0}, {"id": "t144", "name": "[] (144)", "group": 1, "x": 510, "y": 2500.0}, {"id": "t145", "name": "[] (145)", "group": 1, "x": 170, "y": 2700.0}, {"id": "t146", "name": "[] (146)", "group": 1, "x": 340, "y": 2500.0}, {"id": "t147", "name": "[] (147)", "group": 1, "x": 170, "y": 2900.0}, {"id": "t148", "name": "[] (148)", "group": 1, "x": 510, "y": 2700.0}, {"id": "t149", "name": "[] (149)", "group": 1, "x": 340, "y": 2700.0}, {"id": "t150", "name": "[] (150)", "group": 1, "x": 510, "y": 2900.0}, {"id": "t151", "name": "[] (151)", "group": 1, "x": 170, "y": 3100.0}, {"id": "t152", "name": "[] (152)", "group": 1, "x": 340, "y": 2900.0}, {"id": "t153", "name": "[] (153)", "group": 1, "x": 170, "y": 3300.0}, {"id": "t154", "name": "[] (154)", "group": 1, "x": 510, "y": 3100.0}, {"id": "t155", "name": "[] (155)", "group": 1, "x": 340, "y": 3100.0}, {"id": "t156", "name": "[] (156)", "group": 1, "x": 510, "y": 3300.0}, {"id": "t157", "name": "[] (157)", "group": 1, "x": 170, "y": 3500.0}, {"id": "t158", "name": "[] (158)", "group": 1, "x": 340, "y": 3300.0}, {"id": "t159", "name": "[] (159)", "group": 1, "x": 170, "y": 3700.0}, {"id": "t160", "name": "[] (160)", "group": 1, "x": 510, "y": 3500.0}, {"id": "t161", "name": "[] (161)", "group": 1, "x": 340, "y": 3500.0}, {"id": "t162", "name": "[] (162)", "group": 1, "x": 510, "y": 3700.0}, {"id": "t163", "name": "[] (163)", "group": 1, "x": 170, "y": 3900.0}, {"id": "t164", "name": "[] (164)", "group": 1, "x": 340, "y": 3700.0}, {"id": "t165", "name": "[] (165)", "group": 1, "x": 170, "y": 12700.0}, {"id": "t166", "name": "[] (166)", "group": 1, "x": 340, "y": 11700.0}, {"id": "t167", "name": "[] (167)", "group": 1, "x": 170, "y": 12900.0}, {"id": "t168", "name": "[] (168)", "group": 1, "x": 340, "y": 12900.0}, {"id": "t169", "name": "[] (169)", "group": 1, "x": 510, "y": 12900.0}, {"id": "t170", "name": "[] (170)", "group": 1, "x": 680, "y": 12900.0}, {"id": "t171", "name": "[] (171)", "group": 1, "x": 510, "y": 12700.0}, {"id": "t172", "name": "[] (172)", "group": 1, "x": 170, "y": 11700.0}, {"id": "t173", "name": "[] (173)", "group": 1, "x": 170, "y": 12500.0}, {"id": "t174", "name": "[] (174)", "group": 1, "x": 340, "y": 12700.0}, {"id": "t175", "name": "[] (175)", "group": 1, "x": 170, "y": 100.0}], "edges": [{"source": "t175", "target": "o0"}, {"source": "t86", "target": "o0"}, {"source": "t84", "target": "o0"}, {"target": "t85", "source": "o0"}, {"source": "t85", "target": "o1"}, {"source": "t113", "target": "o1"}, {"source": "t112", "target": "o1"}, {"target": "t111", "source": "o1"}, {"source": "t111", "target": "o2"}, {"source": "t116", "target": "o2"}, {"source": "t114", "target": "o2"}, {"target": "t115", "source": "o2"}, {"source": "t115", "target": "o3"}, {"source": "t119", "target": "o3"}, {"source": "t118", "target": "o3"}, {"target": "t117", "source": "o3"}, {"source": "t117", "target": "o4"}, {"source": "t122", "target": "o4"}, {"source": "t120", "target": "o4"}, {"target": "t121", "source": "o4"}, {"source": "t121", "target": "o5"}, {"source": "t125", "target": "o5"}, {"source": "t124", "target": "o5"}, {"target": "t123", "source": "o5"}, {"source": "t123", "target": "o6"}, {"source": "t128", "target": "o6"}, {"source": "t126", "target": "o6"}, {"target": "t127", "source": "o6"}, {"source": "t127", "target": "o7"}, {"source": "t131", "target": "o7"}, {"source": "t130", "target": "o7"}, {"target": "t129", "source": "o7"}, {"source": "t129", "target": "o8"}, {"source": "t134", "target": "o8"}, {"source": "t132", "target": "o8"}, {"target": "t133", "source": "o8"}, {"source": "t133", "target": "o9"}, {"source": "t137", "target": "o9"}, {"source": "t136", "target": "o9"}, {"target": "t135", "source": "o9"}, {"source": "t135", "target": "o10"}, {"source": "t140", "target": "o10"}, {"source": "t138", "target": "o10"}, {"target": "t139", "source": "o10"}, {"source": "t139", "target": "o11"}, {"source": "t143", "target": "o11"}, {"source": "t142", "target": "o11"}, {"target": "t141", "source": "o11"}, {"source": "t141", "target": "o12"}, {"source": "t146", "target": "o12"}, {"source": "t144", "target": "o12"}, {"target": "t145", "source": "o12"}, {"source": "t145", "target": "o13"}, {"source": "t149", "target": "o13"}, {"source": "t148", "target": "o13"}, {"target": "t147", "source": "o13"}, {"source": "t147", "target": "o14"}, {"source": "t152", "target": "o14"}, {"source": "t150", "target": "o14"}, {"target": "t151", "source": "o14"}, {"source": "t151", "target": "o15"}, {"source": "t155", "target": "o15"}, {"source": "t154", "target": "o15"}, {"target": "t153", "source": "o15"}, {"source": "t153", "target": "o16"}, {"source": "t158", "target": "o16"}, {"source": "t156", "target": "o16"}, {"target": "t157", "source": "o16"}, {"source": "t157", "target": "o17"}, {"source": "t161", "target": "o17"}, {"source": "t160", "target": "o17"}, {"target": "t159", "source": "o17"}, {"source": "t159", "target": "o18"}, {"source": "t164", "target": "o18"}, {"source": "t162", "target": "o18"}, {"target": "t163", "source": "o18"}, {"source": "t163", "target": "o19"}, {"source": "t89", "target": "o19"}, {"source": "t88", "target": "o19"}, {"target": "t87", "source": "o19"}, {"source": "t87", "target": "o20"}, {"source": "t92", "target": "o20"}, {"source": "t90", "target": "o20"}, {"target": "t91", "source": "o20"}, {"source": "t91", "target": "o21"}, {"source": "t95", "target": "o21"}, {"source": "t94", "target": "o21"}, {"target": "t93", "source": "o21"}, {"source": "t93", "target": "o22"}, {"source": "t98", "target": "o22"}, {"source": "t96", "target": "o22"}, {"target": "t97", "source": "o22"}, {"source": "t97", "target": "o23"}, {"source": "t101", "target": "o23"}, {"source": "t100", "target": "o23"}, {"target": "t99", "source": "o23"}, {"source": "t99", "target": "o24"}, {"source": "t104", "target": "o24"}, {"source": "t102", "target": "o24"}, {"target": "t103", "source": "o24"}, {"source": "t103", "target": "o25"}, {"source": "t107", "target": "o25"}, {"source": "t106", "target": "o25"}, {"target": "t105", "source": "o25"}, {"source": "t105", "target": "o26"}, {"source": "t110", "target": "o26"}, {"source": "t108", "target": "o26"}, {"target": "t109", "source": "o26"}, {"source": "t109", "target": "o27"}, {"source": "t62", "target": "o27"}, {"source": "t60", "target": "o27"}, {"target": "t61", "source": "o27"}, {"source": "t61", "target": "o28"}, {"source": "t74", "target": "o28"}, {"source": "t72", "target": "o28"}, {"target": "t73", "source": "o28"}, {"source": "t73", "target": "o29"}, {"source": "t65", "target": "o29"}, {"source": "t63", "target": "o29"}, {"target": "t64", "source": "o29"}, {"source": "t64", "target": "o30"}, {"source": "t77", "target": "o30"}, {"source": "t75", "target": "o30"}, {"target": "t76", "source": "o30"}, {"source": "t76", "target": "o31"}, {"source": "t68", "target": "o31"}, {"source": "t66", "target": "o31"}, {"target": "t67", "source": "o31"}, {"source": "t67", "target": "o32"}, {"source": "t80", "target": "o32"}, {"source": "t78", "target": "o32"}, {"target": "t79", "source": "o32"}, {"source": "t79", "target": "o33"}, {"source": "t71", "target": "o33"}, {"source": "t69", "target": "o33"}, {"target": "t70", "source": "o33"}, {"source": "t70", "target": "o34"}, {"source": "t83", "target": "o34"}, {"source": "t81", "target": "o34"}, {"target": "t82", "source": "o34"}, {"source": "t97", "target": "o35"}, {"source": "t2", "target": "o35"}, {"source": "t1", "target": "o35"}, {"target": "t0", "source": "o35"}, {"source": "t0", "target": "o36"}, {"source": "t8", "target": "o36"}, {"target": "t6", "source": "o36"}, {"source": "t97", "target": "o37"}, {"source": "t5", "target": "o37"}, {"source": "t4", "target": "o37"}, {"target": "t3", "source": "o37"}, {"source": "t3", "target": "o38"}, {"source": "t9", "target": "o38"}, {"target": "t7", "source": "o38"}, {"source": "t109", "target": "o39"}, {"source": "t12", "target": "o39"}, {"source": "t11", "target": "o39"}, {"target": "t10", "source": "o39"}, {"source": "t10", "target": "o40"}, {"source": "t18", "target": "o40"}, {"target": "t16", "source": "o40"}, {"source": "t109", "target": "o41"}, {"source": "t15", "target": "o41"}, {"source": "t14", "target": "o41"}, {"target": "t13", "source": "o41"}, {"source": "t13", "target": "o42"}, {"source": "t19", "target": "o42"}, {"target": "t17", "source": "o42"}, {"source": "t73", "target": "o43"}, {"source": "t22", "target": "o43"}, {"source": "t21", "target": "o43"}, {"target": "t20", "source": "o43"}, {"source": "t20", "target": "o44"}, {"source": "t28", "target": "o44"}, {"target": "t26", "source": "o44"}, {"source": "t73", "target": "o45"}, {"source": "t25", "target": "o45"}, {"source": "t24", "target": "o45"}, {"target": "t23", "source": "o45"}, {"source": "t23", "target": "o46"}, {"source": "t29", "target": "o46"}, {"target": "t27", "source": "o46"}, {"source": "t76", "target": "o47"}, {"source": "t32", "target": "o47"}, {"source": "t31", "target": "o47"}, {"target": "t30", "source": "o47"}, {"source": "t30", "target": "o48"}, {"source": "t38", "target": "o48"}, {"target": "t36", "source": "o48"}, {"source": "t76", "target": "o49"}, {"source": "t35", "target": "o49"}, {"source": "t34", "target": "o49"}, {"target": "t33", "source": "o49"}, {"source": "t33", "target": "o50"}, {"source": "t39", "target": "o50"}, {"target": "t37", "source": "o50"}, {"source": "t79", "target": "o51"}, {"source": "t42", "target": "o51"}, {"source": "t41", "target": "o51"}, {"target": "t40", "source": "o51"}, {"source": "t40", "target": "o52"}, {"source": "t48", "target": "o52"}, {"target": "t46", "source": "o52"}, {"source": "t79", "target": "o53"}, {"source": "t45", "target": "o53"}, {"source": "t44", "target": "o53"}, {"target": "t43", "source": "o53"}, {"source": "t43", "target": "o54"}, {"source": "t49", "target": "o54"}, {"target": "t47", "source": "o54"}, {"source": "t82", "target": "o55"}, {"source": "t52", "target": "o55"}, {"source": "t51", "target": "o55"}, {"target": "t50", "source": "o55"}, {"source": "t50", "target": "o56"}, {"source": "t58", "target": "o56"}, {"target": "t56", "source": "o56"}, {"source": "t6", "target": "o57"}, {"source": "t16", "target": "o57"}, {"source": "t26", "target": "o57"}, {"source": "t36", "target": "o57"}, {"source": "t46", "target": "o57"}, {"source": "t56", "target": "o57"}, {"target": "t172", "source": "o57"}, {"source": "t172", "target": "o58"}, {"source": "t166", "target": "o58"}, {"target": "t165", "source": "o58"}, {"source": "t82", "target": "o59"}, {"source": "t55", "target": "o59"}, {"source": "t54", "target": "o59"}, {"target": "t53", "source": "o59"}, {"source": "t53", "target": "o60"}, {"source": "t59", "target": "o60"}, {"target": "t57", "source": "o60"}, {"source": "t7", "target": "o61"}, {"source": "t17", "target": "o61"}, {"source": "t27", "target": "o61"}, {"source": "t37", "target": "o61"}, {"source": "t47", "target": "o61"}, {"source": "t57", "target": "o61"}, {"target": "t173", "source": "o61"}, {"source": "t173", "target": "o62"}, {"target": "t174", "source": "o62"}, {"source": "t165", "target": "o63"}, {"source": "t174", "target": "o63"}, {"source": "t171", "target": "o63"}, {"target": "t167", "source": "o63"}, {"target": "t168", "source": "o63"}, {"target": "t169", "source": "o63"}, {"target": "t170", "source": "o63"}]};
+
+    var svg = d3.select("#subgraph0")
+    var width = svg.attr("width");
+    var height = svg.attr("height");
+    // Make the graph scrollable.
+    svg = svg.call(d3.zoom().on("zoom", function() {
+      svg.attr("transform", d3.event.transform);
+    })).append("g");
+
+
+    var color = d3.scaleOrdinal(d3.schemeDark2);
+
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) {return d.id;}))
+        .force("charge", d3.forceManyBody())
+        .force("center", d3.forceCenter(0.5 * width, 0.5 * height));
+
+
+    function buildGraph() {
+      var edge = svg.append("g").attr("class", "edges").selectAll("line")
+        .data(graph.edges).enter().append("path").attr("stroke","black").attr("fill","none")
+
+      // Make the node group
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes)
+        .enter().append("g")
+        .attr("x", function(d){return d.x})
+        .attr("y", function(d){return d.y})
+        .attr("transform", function(d) {
+          return "translate( " + d.x + ", " + d.y + ")"
+        })
+        .attr("class", "nodes")
+          .call(d3.drag()
+              .on("start", function(d) {
+                if(!d3.event.active) simulation.alphaTarget(1.0).restart();
+                d.fx = d.x;d.fy = d.y;
+              })
+              .on("drag", function(d) {
+                d.fx = d3.event.x; d.fy = d3.event.y;
+              })
+              .on("end", function(d) {
+                if (!d3.event.active) simulation.alphaTarget(0);
+                d.fx = d.fy = null;
+              }));
+      // Within the group, draw a box for the node position and text
+      // on the side.
+
+      var node_width = 150;
+      var node_height = 30;
+
+      node.append("rect")
+          .attr("r", "5px")
+          .attr("width", node_width)
+          .attr("height", node_height)
+          .attr("rx", function(d) { return d.group == 1 ? 1 : 10; })
+          .attr("stroke", "#000000")
+          .attr("fill", function(d) { return d.group == 1 ? "#dddddd" : "#000000"; })
+      node.append("text")
+          .text(function(d) { return d.name; })
+          .attr("x", 5)
+          .attr("y", 20)
+          .attr("fill", function(d) { return d.group == 1 ? "#000000" : "#eeeeee"; })
+      // Setup force parameters and update position callback
+
+
+      var node = svg.selectAll(".nodes")
+        .data(graph.nodes);
+
+      // Bind the links
+      var name_to_g = {}
+      node.each(function(data, index, nodes) {
+        console.log(data.id)
+        name_to_g[data.id] = this;
+      });
+
+      function proc(w, t) {
+        return parseInt(w.getAttribute(t));
+      }
+      edge.attr("d", function(d) {
+        function lerp(t, a, b) {
+          return (1.0-t) * a + t * b;
+        }
+        var x1 = proc(name_to_g[d.source],"x") + node_width /2;
+        var y1 = proc(name_to_g[d.source],"y") + node_height;
+        var x2 = proc(name_to_g[d.target],"x") + node_width /2;
+        var y2 = proc(name_to_g[d.target],"y");
+        var s = "M " + x1 + " " + y1
+            + " C " + x1 + " " + lerp(.5, y1, y2)
+            + " " + x2 + " " + lerp(.5, y1, y2)
+            + " " + x2  + " " + y2
+      return s;
+    });
+
+  }
+  buildGraph()
+</script>
+</div><h2>Buffers</h2>
+<table><tr>
+<tr>
+<th>index</th><th>data</th></tr>
+<tr>
+<td>0</td><td>--</td>
+</tr>
+<tr>
+<td>1</td><td>2184 bytes</td>
+</tr>
+<tr>
+<td>2</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>3</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>4</td><td>2184 bytes</td>
+</tr>
+<tr>
+<td>5</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>6</td><td>2184 bytes</td>
+</tr>
+<tr>
+<td>7</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>8</td><td>2184 bytes</td>
+</tr>
+<tr>
+<td>9</td><td>2184 bytes</td>
+</tr>
+<tr>
+<td>10</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>11</td><td>1092 bytes</td>
+</tr>
+<tr>
+<td>12</td><td>48 bytes</td>
+</tr>
+<tr>
+<td>13</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>14</td><td>192 bytes</td>
+</tr>
+<tr>
+<td>15</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>16</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>17</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>18</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>19</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>20</td><td>3072 bytes</td>
+</tr>
+<tr>
+<td>21</td><td>3072 bytes</td>
+</tr>
+<tr>
+<td>22</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>23</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>24</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>25</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>26</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>27</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>28</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>29</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>30</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>31</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>32</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>33</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>34</td><td>192 bytes</td>
+</tr>
+<tr>
+<td>35</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>36</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>37</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>38</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>39</td><td>165888 bytes</td>
+</tr>
+<tr>
+<td>40</td><td>--</td>
+</tr>
+<tr>
+<td>41</td><td>165888 bytes</td>
+</tr>
+<tr>
+<td>42</td><td>36864 bytes</td>
+</tr>
+<tr>
+<td>43</td><td>663552 bytes</td>
+</tr>
+<tr>
+<td>44</td><td>41472 bytes</td>
+</tr>
+<tr>
+<td>45</td><td>3072 bytes</td>
+</tr>
+<tr>
+<td>46</td><td>6912 bytes</td>
+</tr>
+<tr>
+<td>47</td><td>96 bytes</td>
+</tr>
+<tr>
+<td>48</td><td>294912 bytes</td>
+</tr>
+<tr>
+<td>49</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>50</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>51</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>52</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>53</td><td>384 bytes</td>
+</tr>
+<tr>
+<td>54</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>55</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>56</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>57</td><td>73728 bytes</td>
+</tr>
+<tr>
+<td>58</td><td>1728 bytes</td>
+</tr>
+<tr>
+<td>59</td><td>36864 bytes</td>
+</tr>
+<tr>
+<td>60</td><td>1728 bytes</td>
+</tr>
+<tr>
+<td>61</td><td>589824 bytes</td>
+</tr>
+<tr>
+<td>62</td><td>18432 bytes</td>
+</tr>
+<tr>
+<td>63</td><td>864 bytes</td>
+</tr>
+<tr>
+<td>64</td><td>9216 bytes</td>
+</tr>
+<tr>
+<td>65</td><td>864 bytes</td>
+</tr>
+<tr>
+<td>66</td><td>432 bytes</td>
+</tr>
+<tr>
+<td>67</td><td>1152 bytes</td>
+</tr>
+<tr>
+<td>68</td><td>216 bytes</td>
+</tr>
+<tr>
+<td>69</td><td>192 bytes</td>
+</tr>
+<tr>
+<td>70</td><td>--</td>
+</tr>
+<tr>
+<td>71</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>72</td><td>--</td>
+</tr>
+<tr>
+<td>73</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>74</td><td>--</td>
+</tr>
+<tr>
+<td>75</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>76</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>77</td><td>--</td>
+</tr>
+<tr>
+<td>78</td><td>419328 bytes</td>
+</tr>
+<tr>
+<td>79</td><td>--</td>
+</tr>
+<tr>
+<td>80</td><td>9216 bytes</td>
+</tr>
+<tr>
+<td>81</td><td>--</td>
+</tr>
+<tr>
+<td>82</td><td>--</td>
+</tr>
+<tr>
+<td>83</td><td>--</td>
+</tr>
+<tr>
+<td>84</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>85</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>86</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>87</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>88</td><td>--</td>
+</tr>
+<tr>
+<td>89</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>90</td><td>7668 bytes</td>
+</tr>
+<tr>
+<td>91</td><td>--</td>
+</tr>
+<tr>
+<td>92</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>93</td><td>--</td>
+</tr>
+<tr>
+<td>94</td><td>4608 bytes</td>
+</tr>
+<tr>
+<td>95</td><td>--</td>
+</tr>
+<tr>
+<td>96</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>97</td><td>--</td>
+</tr>
+<tr>
+<td>98</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>99</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>100</td><td>--</td>
+</tr>
+<tr>
+<td>101</td><td>--</td>
+</tr>
+<tr>
+<td>102</td><td>--</td>
+</tr>
+<tr>
+<td>103</td><td>--</td>
+</tr>
+<tr>
+<td>104</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>105</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>106</td><td>--</td>
+</tr>
+<tr>
+<td>107</td><td>12 bytes</td>
+</tr>
+<tr>
+<td>108</td><td>--</td>
+</tr>
+<tr>
+<td>109</td><td>9216 bytes</td>
+</tr>
+<tr>
+<td>110</td><td>1536 bytes</td>
+</tr>
+<tr>
+<td>111</td><td>--</td>
+</tr>
+<tr>
+<td>112</td><td>--</td>
+</tr>
+<tr>
+<td>113</td><td>--</td>
+</tr>
+<tr>
+<td>114</td><td>--</td>
+</tr>
+<tr>
+<td>115</td><td>--</td>
+</tr>
+<tr>
+<td>116</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>117</td><td>--</td>
+</tr>
+<tr>
+<td>118</td><td>18432 bytes</td>
+</tr>
+<tr>
+<td>119</td><td>--</td>
+</tr>
+<tr>
+<td>120</td><td>--</td>
+</tr>
+<tr>
+<td>121</td><td>3456 bytes</td>
+</tr>
+<tr>
+<td>122</td><td>--</td>
+</tr>
+<tr>
+<td>123</td><td>--</td>
+</tr>
+<tr>
+<td>124</td><td>--</td>
+</tr>
+<tr>
+<td>125</td><td>--</td>
+</tr>
+<tr>
+<td>126</td><td>--</td>
+</tr>
+<tr>
+<td>127</td><td>--</td>
+</tr>
+<tr>
+<td>128</td><td>2304 bytes</td>
+</tr>
+<tr>
+<td>129</td><td>--</td>
+</tr>
+<tr>
+<td>130</td><td>4608 bytes</td>
+</tr>
+<tr>
+<td>131</td><td>--</td>
+</tr>
+<tr>
+<td>132</td><td>--</td>
+</tr>
+<tr>
+<td>133</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>134</td><td>--</td>
+</tr>
+<tr>
+<td>135</td><td>209664 bytes</td>
+</tr>
+<tr>
+<td>136</td><td>--</td>
+</tr>
+<tr>
+<td>137</td><td>--</td>
+</tr>
+<tr>
+<td>138</td><td>--</td>
+</tr>
+<tr>
+<td>139</td><td>147456 bytes</td>
+</tr>
+<tr>
+<td>140</td><td>--</td>
+</tr>
+<tr>
+<td>141</td><td>--</td>
+</tr>
+<tr>
+<td>142</td><td>--</td>
+</tr>
+<tr>
+<td>143</td><td>--</td>
+</tr>
+<tr>
+<td>144</td><td>--</td>
+</tr>
+<tr>
+<td>145</td><td>--</td>
+</tr>
+<tr>
+<td>146</td><td>--</td>
+</tr>
+<tr>
+<td>147</td><td>--</td>
+</tr>
+<tr>
+<td>148</td><td>--</td>
+</tr>
+<tr>
+<td>149</td><td>768 bytes</td>
+</tr>
+<tr>
+<td>150</td><td>--</td>
+</tr>
+<tr>
+<td>151</td><td>104832 bytes</td>
+</tr>
+<tr>
+<td>152</td><td>--</td>
+</tr>
+<tr>
+<td>153</td><td>--</td>
+</tr>
+<tr>
+<td>154</td><td>18432 bytes</td>
+</tr>
+<tr>
+<td>155</td><td>--</td>
+</tr>
+<tr>
+<td>156</td><td>--</td>
+</tr>
+<tr>
+<td>157</td><td>--</td>
+</tr>
+<tr>
+<td>158</td><td>--</td>
+</tr>
+<tr>
+<td>159</td><td>--</td>
+</tr>
+<tr>
+<td>160</td><td>--</td>
+</tr>
+<tr>
+<td>161</td><td>--</td>
+</tr>
+<tr>
+<td>162</td><td>104832 bytes</td>
+</tr>
+<tr>
+<td>163</td><td>--</td>
+</tr>
+<tr>
+<td>164</td><td>--</td>
+</tr>
+<tr>
+<td>165</td><td>4608 bytes</td>
+</tr>
+<tr>
+<td>166</td><td>--</td>
+</tr>
+<tr>
+<td>167</td><td>104832 bytes</td>
+</tr>
+<tr>
+<td>168</td><td>--</td>
+</tr>
+<tr>
+<td>169</td><td>--</td>
+</tr>
+<tr>
+<td>170</td><td>4608 bytes</td>
+</tr>
+<tr>
+<td>171</td><td>52416 bytes</td>
+</tr>
+<tr>
+<td>172</td><td>--</td>
+</tr>
+<tr>
+<td>173</td><td>--</td>
+</tr>
+<tr>
+<td>174</td><td>--</td>
+</tr>
+<tr>
+<td>175</td><td>16 bytes</td>
+</tr>
+<tr>
+<td>176</td><td>648 bytes</td>
+</tr>
+</table>
+<h2>Operator Codes</h2>
+<table><tr>
+<tr>
+<th>index</th><th>builtin_code</th><th>custom_code</th><th>version</th></tr>
+<tr>
+<td>0</td><td>CONV_2D</td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td><td>CONCATENATION</td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td><td>DEPTHWISE_CONV_2D</td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td><td>LOGISTIC</td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td>4</td><td>RESHAPE</td>
+<td>None</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5</td><td>CUSTOM</td>
+<td>TFLite_Detection_PostProcess</td>
+<td>1</td>
+</tr>
+</table>
+</body></html>
